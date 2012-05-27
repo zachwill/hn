@@ -35,8 +35,8 @@ def search(options):
     if options.search:
         term = ' '.join(options.search)
         params['q'] = term
-    if options.number:
-        params['limit'] = options.number
+    if options.limit:
+        params['limit'] = options.limit
     if options.start:
         params['start'] = options.start
     data = YCombinator().get(**params)
