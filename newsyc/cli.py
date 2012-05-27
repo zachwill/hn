@@ -22,8 +22,10 @@ def create_parser():
     parser = ArgumentParser(prog='hn', description=description)
     parser.add_argument('search', metavar='S', type=str, nargs='*',
                         help="A search term to query for.")
-    parser.add_argument('-n', '--number', type=int,
+    parser.add_argument('-n', '--limit', metavar='N', type=int,
                         help="Number of results to return. Max 100.")
+    parser.add_argument('-s', '--start', metavar='N', type=int,
+                        help="Ordinal position of first result.")
     return parser
 
 
@@ -35,6 +37,8 @@ def search(options):
         params['q'] = term
     if options.number:
         params['limit'] = options.number
+    if options.start:
+        params['start'] = options.start
     data = YCombinator().get(**params)
     return decorate(data)
 
