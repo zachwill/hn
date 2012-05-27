@@ -11,9 +11,9 @@ try:
     from pygments import highlight
     from pygments.formatters import Terminal256Formatter as Term256
     from pygments.lexers import JavascriptLexer
-    have_pygments = True
+    has_pygments = True
 except ImportError:
-    have_pygments = False
+    has_pygments = False
 
 
 def create_parser():
@@ -42,7 +42,7 @@ def decorate(stream, indent=2):
 def print_formatted_json(stream, json_data, indentation):
     """Format and print JSON."""
     formatted = json.dumps(json_data, indent=indentation)
-    if have_pygments and getattr(stream, 'isatty', lambda: False)():
+    if has_pygments:
         formatter = Term256()
         lexer = JavascriptLexer()
         formatted = highlight(formatted, formatter=formatter, lexer=lexer)
