@@ -12,11 +12,11 @@ class YCombinator(object):
     def __init__(self):
         self.url = "http://api.thriftdb.com/api.hnsearch.com/items/_search"
 
-    def get(self, params):
+    def get(self, **params):
+        """Perform a GET request."""
         data = req.get(self.url, params=params)
         self.request = data
-        # Use json.loads
-        return data.content
+        return json.loads(data.content)
 
     def date(self, day):
         """Query a specific date."""
@@ -35,3 +35,8 @@ class YCombinator(object):
     def filter(self, condition):
         """Filter the results to a specific condition."""
         return "filter"
+
+    def search(self, term, **params):
+        """Perform a search against the HNSearch API."""
+        params['q'] = term
+        return self.get(**params)
