@@ -5,6 +5,7 @@ Command line goodness.
 import sys
 from argparse import ArgumentParser
 import simplejson as json
+from .core import YCombinator
 
 try:
     from pygments import highlight
@@ -27,15 +28,14 @@ def create_parser():
 def search(options):
     """Perform a search against the HNSearch API."""
     if options.search:
-        search = ' '.join(options.search)
-        data = json.dumps({'term': search})
+        term = ' '.join(options.search)
+        data = YCombinator().search(term)
         return decorate(data)
 
 
 def decorate(stream, indent=2):
     """Turn JSON into something readable."""
-    json_data = json.loads(stream)
-    print_formatted_json(sys.stdout, json_data, indent)
+    print_formatted_json(sys.stdout, stream, indent)
     sys.stdout.write('\n')
 
 
