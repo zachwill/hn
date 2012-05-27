@@ -25,6 +25,14 @@ class Date(object):
             # it's a datetime
             print date
 
+    def hour(self, hour):
+        """Add a time to the date."""
+        if isinstance(hour, str):
+            print hour
+        else:
+            print hour
+        return self
+
     def __str__(self):
         return 'YYYY-MM-DD'
 
