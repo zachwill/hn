@@ -2,11 +2,13 @@ Usage I see for the CLI going forward.
 
 ### search
 
-Basic search terms and querying.
+Basic search terms and querying. Allows for limit with `n` flag, and
+starting position with the `s` flag.
 
 ```
 hn search term
 hn search term -n 100
+hn search term -n 200 -s 100
 ```
 
 
@@ -51,9 +53,9 @@ hn -c domain -n 50
 By default, will be descending.
 
 ```
-hn techcrunch -s points
+hn techcrunch -S points
 
-hn -d 03-16-12 -s username asc
+hn -d 03-16-12 -S username asc
 ```
 
 
