@@ -19,24 +19,13 @@ class YCombinator(object):
         # Use json.loads
         return data.content
 
-    def _convert_date(self, date):
-        """Convert a given date to the proper format."""
-        if isinstance(date, str):
-            # Check it's length -- YYYY-MM-DD vs MM-DD-YY
-            print date
-        elif isinstance(date, Iterable):
-            # then it's an iterable
-            print date
-        else:
-            # it's a datetime
-            print date
-        return date
-
     def dates(self, start, end):
         """Query between two dates."""
-        start = self._convert_date(start)
-        end = self._convert_date(end)
+        start = Date(start)
+        end = Date(end)
 
-    def hours(self, date, start, end):
+    def hours(self, day, start, end):
         """Query a day by specific hours."""
-        return "hours"
+        date = Date(day)
+        start = date.hour(start)
+        end = date.hour(end)
