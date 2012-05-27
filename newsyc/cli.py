@@ -26,6 +26,8 @@ def create_parser():
                         help="Number of results to return. Max 100.")
     parser.add_argument('-s', '--start', metavar='N', type=int,
                         help="Ordinal position of first result.")
+    parser.add_argument('-S', '--sort', metavar='S', nargs='*',
+                        help="List of pairs to sort results.")
     return parser
 
 
@@ -39,6 +41,11 @@ def search(options):
         params['limit'] = options.limit
     if options.start:
         params['start'] = options.start
+    if options.sort:
+        sort = options.sort
+        if len(sort) == 1:
+            sort.append('desc')
+        params['sortby'] = ' '.join(sort)
     data = YCombinator().get(**params)
     return decorate(data)
 
