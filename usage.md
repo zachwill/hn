@@ -1,15 +1,5 @@
 Usage I see for the CLI going forward.
 
-### search
-
-Basic search terms and querying. Allows for limit with `n` flag, and
-starting position with the `s` flag.
-
-```
-hn search term
-hn search term -n 100
-hn search term -n 200 -s 100
-```
 
 
 ### dates
@@ -33,8 +23,8 @@ hn -x username=zachwill
 
 hn -U zachwill
 
-hn query -T comment
-hn query -T submission
+hn search term -T comment
+hn search term -T submission
 ```
 
 
@@ -46,17 +36,6 @@ Has a default facet limit of 10.
 hn -c domain
 
 hn -c domain -n 50
-```
-
-
-### sortby
-
-By default, will be descending.
-
-```
-hn techcrunch -S points
-
-hn -d 03-16-12 -S username asc
 ```
 
 

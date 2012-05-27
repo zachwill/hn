@@ -8,4 +8,14 @@ key-value parameters.
 
 def convert(data):
     """Where the conversion magic happens."""
+    if 'day' in data:
+        # Should be in YYYY-MM-DD format
+        key = 'filter[fields][create_ts]'
+        date = data.pop('day')
+        value = "[%sT00:00:00Z TO %sT23:59:59Z]" % (date, date)
+        data[key] = value
+    if 'type' in data:
+        # The type can't be plural (i.e. comments, submissions).
+        key = 'filter[fields][type]'
+        data[key] = data.pop('type').rstrip('s')
     return data
