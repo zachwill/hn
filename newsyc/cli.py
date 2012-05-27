@@ -27,10 +27,12 @@ def create_parser():
 
 def search(options):
     """Perform a search against the HNSearch API."""
+    params = {}
     if options.search:
         term = ' '.join(options.search)
-        data = YCombinator().search(term)
-        return decorate(data)
+        params['q'] = term
+    data = YCombinator().get(**params)
+    return decorate(data)
 
 
 def decorate(stream, indent=2):
