@@ -33,7 +33,8 @@ hn -x username=zachwill
 
 hn -U zachwill
 
-hn -T specific title
+hn query -T comment
+hn query -T submission
 ```
 
 
