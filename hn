@@ -6,10 +6,11 @@ CLI for interacting with the HNSearch API.
 
 import sys
 import simplejson as json
+from newsyc import cli
 
 try:
     from pygments import highlight
-    from pygments.formatters import TerminalFormatter
+    from pygments.formatters import Terminal256Formatter as Term256
     from pygments.lexers import JavascriptLexer
     have_pygments = True
 except ImportError:
@@ -20,13 +21,28 @@ def print_formatted_json(stream, json_data, indentation):
     """Format and print JSON."""
     formatted = json.dumps(json_data, indent=indentation)
     if have_pygments and getattr(stream, 'isatty', lambda: False)():
-        formatter, lexer = TerminalFormatter(), JavascriptLexer()
+        formatter = Term256()
+        lexer = JavascriptLexer()
         formatted = highlight(formatted, formatter=formatter, lexer=lexer)
     print >> stream, formatted.rstrip()
 
 
 def decorate(stream, indent=2):
     """Turn JSON into something readable."""
-    json_data = json.load(stream)
+    json_data = json.loads(stream)
     print_formatted_json(sys.stdout, json_data, indent)
     sys.stdout.write('\n')
+
+
+def search(options):
+    """Perform a search against the HNSearch API."""
+    if options.search:
+        search = ' '.join(options.search)
+        data = json.dumps({'term': search})
+        return decorate(data)
+
+
+if __name__ == '__main__':
+    parser = cli.create_parser()
+    options = parser.parse_args()
+    search(options)
