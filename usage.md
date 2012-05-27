@@ -27,7 +27,11 @@ hn -d 03-16-12 -t 12am 12pm
 ### filter
 
 ```
-hn -x color=black
+hn -x username=zachwill
+
+hn -U zachwill
+
+hn -T specific title
 ```
 
 
