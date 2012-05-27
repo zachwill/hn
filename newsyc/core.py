@@ -3,10 +3,8 @@ Core functionality for interacting with the HNSearch API.
 """
 
 from collections import Iterable
-
 import requests as req
-from simplejson import loads
-
+import simplejson as json
 from .date import Date
 
 
@@ -40,9 +38,5 @@ class YCombinator(object):
         end = self._convert_date(end)
 
     def hours(self, date, start, end):
-        """Query """
-        return "poop"
-
-
-params = {"sortby": "points desc", "limit": 100, "start": 100}
-params = {"filter[fields][create_ts]": "[2011-06-01T00:00:00.00Z TO 2011-06-02T23:59:00.00Z]"}
+        """Query a day by specific hours."""
+        return "hours"
