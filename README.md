@@ -58,7 +58,7 @@ By default, sorting will be descending.
 
 ```bash
 hn techcrunch -S points
-hn -d 2012-03-16 -S username asc
+hn -d 2012-03-16 -S username asc -n 100
 ```
 
 ### Type
@@ -68,7 +68,7 @@ submission).
 
 ```bash
 hn zachwill -T comment
-hn zachwill -T submission -S points
+hn zachwill -T submission -S points -n 100
 ```
 
 ### Username
