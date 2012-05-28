@@ -23,15 +23,17 @@ def create_parser():
     parser.add_argument('search', metavar='S', type=str, nargs='*',
                         help="A search term to query for.")
     parser.add_argument('-n', '--limit', metavar='N', type=int,
-                        help="Number of results to return. Max 100.")
+                        help="number of results to return (max 100)")
     parser.add_argument('-s', '--start', metavar='N', type=int,
-                        help="Ordinal position of first result.")
+                        help="ordinal position of first result")
     parser.add_argument('-d', '--day', metavar='YYYY-MM-DD',
-                        help="A specific day to filter by.")
+                        help="filter by a specific date")
     parser.add_argument('-S', '--sort', metavar='S', nargs='*',
-                        help="List of pairs to sort results.")
+                        help="list of pairs to sort results")
     parser.add_argument('-T', '--type', metavar='TYPE',
-                        help="Type of items returned (comment or submission)")
+                        help="type of items returned (comment or submission)")
+    parser.add_argument('--hits', action='store_true',
+                        help="return only the number of results encountered")
     return parser
 
 
@@ -55,7 +57,15 @@ def search(options):
     if options.type:
         params['type'] = options.type
     data = YCombinator().get(**params)
-    return decorate(data)
+    return present(options, data)
+
+
+def present(options, data):
+    """Determine what to do with the data based on CLI options."""
+    if options.hits:
+        print data['hits']
+    else:
+        return decorate(data)
 
 
 def decorate(stream, indent=2):
