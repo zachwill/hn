@@ -15,8 +15,3 @@ def search(term, **params):
 def day(date, **params):
     """Search a specific date."""
     return News().date(date, **params)
-
-
-def date(day, **params):
-    """Just in case."""
-    return News().date(day, **params)
