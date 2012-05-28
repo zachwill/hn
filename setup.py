@@ -9,7 +9,7 @@ except ImportError:
 
 setup(
     name="hn",
-    version="0.1.1",
+    version="0.1.2",
     description="A CLI and Python library for using the HNSearch API.",
     keywords="hn, ycombinator, hacker news, newsyc",
     author="Zach Williams",
