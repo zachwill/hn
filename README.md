@@ -75,7 +75,7 @@ hn zachwill -T submission -S points -n 100
 
 ### Username
 
-The `U` flag allows filtering by a specific username.
+The `u` or `U` flags allows filtering by a specific username.
 
 ```bash
 hn -U zachwill
