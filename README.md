@@ -69,3 +69,12 @@ submission).
 hn zachwill -T comment
 hn zachwill -T submission -S points
 ```
+
+### Username
+
+The `U` flag allows filtering by a specific username.
+
+```bash
+hn -U zachwill
+hn -U pg -T submission -S points
+```

@@ -32,6 +32,8 @@ def create_parser():
                         help="list of pairs to sort results")
     parser.add_argument('-T', '--type', metavar='TYPE',
                         help="type of items returned (comment or submission)")
+    parser.add_argument('-U', '--username', metavar='NAME',
+                        help="filter for a specific username")
     parser.add_argument('--hits', action='store_true',
                         help="return only the number of results encountered")
     return parser
@@ -56,6 +58,8 @@ def search(options):
         params['sortby'] = ' '.join(sort)
     if options.type:
         params['type'] = options.type
+    if options.username:
+        params['username'] = options.username
     data = YCombinator().get(**params)
     return present(options, data)
 

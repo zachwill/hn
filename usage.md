@@ -20,11 +20,14 @@ hn -d 03-16-12 -t 12am 12pm
 
 ```
 hn -x username=zachwill
+```
 
-hn -U zachwill
 
-hn search term -T comment
-hn search term -T submission
+### ignore
+
+```
+hn pg -X type=comment
+hn github -X username=zachwill type=submission
 ```
 
 

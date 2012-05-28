@@ -18,4 +18,6 @@ def convert(data):
         # The type can't be plural (i.e. comments, submissions).
         key = 'filter[fields][type]'
         data[key] = data.pop('type').rstrip('s')
+    if 'username' in data:
+        data['filter[fields][username]'] = data.pop('username')
     return data
