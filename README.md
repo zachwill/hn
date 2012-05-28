@@ -57,8 +57,8 @@ hn zachwill --hits
 By default, sorting will be descending.
 
 ```bash
-hn techcrunch -S points
-hn -d 2012-03-16 -S username asc -n 100
+hn github -S points
+hn -d 03-16-12 -S username asc -n 100
 ```
 
 ### Type
