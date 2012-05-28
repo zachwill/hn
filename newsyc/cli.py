@@ -50,7 +50,12 @@ def search(options):
     if options.start:
         params['start'] = options.start
     if options.day:
-        params['day'] = options.day
+        date = options.day
+        if len(date) == 8:
+            # Then it's in MM-DD-YY format.
+            month, day, year = date.split('-')
+            date = '20%s-%s-%s' % (year, month, day)
+        params['day'] = date
     if options.sort:
         sort = options.sort
         if len(sort) == 1:
