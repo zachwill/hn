@@ -21,15 +21,10 @@ class News(object):
         self.request = data
         return json.loads(data.content)
 
-    def date(self, day):
+    def date(self, day, **params):
         """Query a specific date."""
-        day = Date(day)
-
-    def hours(self, day, start, end):
-        """Query a day by specific hours."""
-        date = Date(day)
-        start = date.hour(start)
-        end = date.hour(end)
+        params['day'] = str(Date(day))
+        return self.get(**params)
 
     def facet(self, term, **params):
         """Facets are almost like searching what can be searched."""
