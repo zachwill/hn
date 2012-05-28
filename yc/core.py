@@ -17,7 +17,6 @@ class News(object):
     def get(self, **params):
         """Perform a GET request."""
         params = thriftdb.convert(params)
-        print params
         data = req.get(self.url, params=params)
         self.request = data
         return json.loads(data.content)
