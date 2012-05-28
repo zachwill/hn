@@ -54,10 +54,12 @@ hn zachwill --hits
 
 ### Sorting
 
-By default, sorting will be descending.
+By default, sorting will be descending (though both `asc` and `desc` can
+be used).
 
 ```bash
 hn github -S points
+hn github -S username desc
 hn -d 03-16-12 -S username asc -n 100
 ```
 
