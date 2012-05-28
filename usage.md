@@ -5,9 +5,6 @@ Usage I see for the CLI going forward.
 ### dates
 
 ```
-hn -d 03-16-12
-hn -d 2012-03-16
-
 hn -d 031612
 hn -d 20120316
 
