@@ -31,7 +31,7 @@ def create_parser():
     parser.add_argument('-S', '--sort', metavar='S', nargs='*',
                         help="List of pairs to sort results.")
     parser.add_argument('-T', '--type', metavar='TYPE',
-                        help="Type of items (submission, comment, etc.)")
+                        help="Type of items returned (comment or submission)")
     return parser
 
 

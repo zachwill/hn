@@ -43,8 +43,8 @@ hn -d 2012-03-16 -S username asc
 
 ### Type
 
-The `T` flag allows filtering by specific types of items (comment,
-submission, etc).
+The `T` flag allows filtering by specific types of items (comment or
+submission).
 
 ```
 hn zachwill -T comment
