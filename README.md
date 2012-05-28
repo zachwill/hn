@@ -8,7 +8,13 @@ API](http://www.hnsearch.com/api) that's easy-to-use.
 Installation
 ------------
 
-From the command line, run the following:
+There are two ways of installing the library:
+
+```
+pip install hn
+```
+
+Alternatively, run the following from the command line:
 
 ```bash
 python setup.py install
