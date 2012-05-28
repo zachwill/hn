@@ -6,17 +6,18 @@ import requests as req
 import simplejson as json
 
 from .date import Date
-from .thriftdb import convert
+from . import thriftdb
 
 
-class YCombinator(object):
+class News(object):
 
     def __init__(self):
         self.url = "http://api.thriftdb.com/api.hnsearch.com/items/_search"
 
     def get(self, **params):
         """Perform a GET request."""
-        params = convert(params)
+        params = thriftdb.convert(params)
+        print params
         data = req.get(self.url, params=params)
         self.request = data
         return json.loads(data.content)

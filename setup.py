@@ -16,8 +16,12 @@ setup(
     author_email="hey@zachwill.com",
     url="https://github.com/zachwill/hn",
     license="MIT",
-    packages=["newsyc"],
-    scripts=["hn"],
+    packages=[
+        "yc"
+    ],
+    scripts=[
+        "hn"
+    ],
     install_requires=[
         "pygments",
         "requests",

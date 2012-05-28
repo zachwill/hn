@@ -5,7 +5,7 @@ Command line goodness.
 import sys
 from argparse import ArgumentParser
 import simplejson as json
-from .core import YCombinator
+from .core import News
 
 try:
     from pygments import highlight
@@ -32,7 +32,7 @@ def create_parser():
                         help="list of pairs to sort results")
     parser.add_argument('-T', '--type', metavar='TYPE',
                         help="type of items returned (comment or submission)")
-    parser.add_argument('-U', '--username', metavar='NAME',
+    parser.add_argument('-u', '-U', '--username', metavar='NAME',
                         help="filter for a specific username")
     parser.add_argument('--hits', action='store_true',
                         help="return only the number of results encountered")
@@ -65,7 +65,7 @@ def search(options):
         params['type'] = options.type
     if options.username:
         params['username'] = options.username
-    data = YCombinator().get(**params)
+    data = News().get(**params)
     return present(options, data)
 
 

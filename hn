@@ -4,7 +4,7 @@
 CLI for interacting with the HNSearch API.
 """
 
-from newsyc import cli
+from yc import cli
 
 
 def main():
