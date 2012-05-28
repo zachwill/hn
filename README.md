@@ -15,8 +15,10 @@ python setup.py install
 ```
 
 
-Usage
+CLI
 -----
+
+Usage patterns for working with the `hn` CLI.
 
 ### Search
 
@@ -40,6 +42,15 @@ hn -d 2012-03-16
 hn github -d 2012-01-01
 ```
 
+### Hits
+
+Return the number of results encountered with the `--hits` flag.
+
+```bash
+hn pg --hits
+hn zachwill --hits
+```
+
 ### Sorting
 
 By default, sorting will be descending.
@@ -57,13 +68,4 @@ submission).
 ```bash
 hn zachwill -T comment
 hn zachwill -T submission -S points
-```
-
-### Hits
-
-Return the number of results encountered with the `--hits` flag.
-
-```bash
-hn pg --hits
-hn zachwill --hits
 ```
