@@ -5,8 +5,8 @@ Core functionality for interacting with the HNSearch API.
 import requests as req
 import simplejson as json
 
-from .date import Date
 from . import thriftdb
+from .date import Date
 
 
 class News(object):
