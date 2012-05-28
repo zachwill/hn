@@ -6,9 +6,6 @@ import sys
 from argparse import ArgumentParser
 import simplejson as json
 
-from .core import News
-from .date import Date
-
 try:
     from pygments import highlight
     from pygments.formatters import Terminal256Formatter as Term256
@@ -16,6 +13,9 @@ try:
     has_pygments = True
 except ImportError:
     has_pygments = False
+
+from .core import News
+from .date import Date
 
 
 def create_parser():
