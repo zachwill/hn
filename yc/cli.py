@@ -28,7 +28,7 @@ def create_parser():
                         help="number of results to return (max 100)")
     parser.add_argument('-s', '--start', metavar='N', type=int,
                         help="ordinal position of first result")
-    parser.add_argument('-d', '--day', metavar='YYYY-MM-DD',
+    parser.add_argument('-d', '--day', metavar='YYYY-MM-DD', type=str,
                         help="filter by a specific date")
     parser.add_argument('-S', '--sort', metavar='S', nargs='*',
                         help="list of pairs to sort results")

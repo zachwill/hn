@@ -7,6 +7,7 @@ from mock import Mock
 
 from yc import cli
 from yc import core
+from yc import date
 
 
 class CLI(TestCase):
@@ -49,9 +50,8 @@ class Search(TestCase):
 
     def setUp(self):
         cli.News = Mock()
-        core.req = Mock()
-        core.json = Mock()
         cli.present = Mock()
+        date.Date = Mock()
 
     def create_cli(self, args):
         parser = cli.create_parser()
@@ -73,6 +73,10 @@ class Search(TestCase):
         self.create_cli('github -n 100 -s 200')
         self.assertSearchParameters(q='github', limit=100, start=200)
 
+    def test_date_filtering(self):
+        self.create_cli('-d 2012-03-16')
+        self.assertTrue(cli.News().get.called)
+
     def test_sortby_parameter(self):
         self.create_cli('pg -S points')
         self.assertSearchParameters(q='pg', sortby='points desc')
@@ -80,5 +84,3 @@ class Search(TestCase):
 
 if __name__ == '__main__':
     main()
-    # params = {"sortby": "points desc", "limit": 100, "start": 100}
-    # params = {"filter[fields][create_ts]": "[2011-06-01T00:00:00.00Z TO 2011-06-02T23:59:00.00Z]"}
