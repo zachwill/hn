@@ -27,8 +27,7 @@ The `d` flag allows for searchs filtered to a specific date (in
 
 ```
 hn -d 2012-03-16
-
-hn search term -d 2012-01-01
+hn github -d 2012-01-01
 ```
 
 ### Sorting
@@ -37,7 +36,6 @@ By default, sorting will be descending.
 
 ```
 hn techcrunch -S points
-
 hn -d 2012-03-16 -S username asc
 ```
 
@@ -49,4 +47,13 @@ submission).
 ```
 hn zachwill -T comment
 hn zachwill -T submission -S points
+```
+
+### Hits
+
+Return the number of results encountered with the `--hits` flag.
+
+```
+hn pg --hits
+hn zachwill --hits
 ```
