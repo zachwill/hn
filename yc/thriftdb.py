@@ -20,6 +20,5 @@ def convert(data):
         data[key] = data.pop('type').rstrip('s')
     if 'username' in data:
         value = data.pop('username')
-        print value
         data['filter[fields][username]'] = value
     return data
