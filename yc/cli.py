@@ -5,7 +5,9 @@ Command line goodness.
 import sys
 from argparse import ArgumentParser
 import simplejson as json
+
 from .core import News
+from .date import Date
 
 try:
     from pygments import highlight
@@ -50,12 +52,7 @@ def search(options):
     if options.start:
         params['start'] = options.start
     if options.day:
-        date = options.day
-        if len(date) == 8:
-            # Then it's in MM-DD-YY format.
-            month, day, year = date.split('-')
-            date = '20%s-%s-%s' % (year, month, day)
-        params['day'] = date
+        params['day'] = Date(options.day)
     if options.sort:
         sort = options.sort
         if len(sort) == 1:

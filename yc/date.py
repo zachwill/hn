@@ -11,19 +11,29 @@ class Date(object):
 
     def __init__(self, date):
         self._d = date
+        self._date = self._convert_date(date)
 
-    def _convert_date(self):
+    def _convert_date(self, date):
         """Convert the given input to a date."""
-        date = self._d
         if isinstance(date, str):
-            # Check it's length -- YYYY-MM-DD vs MM-DD-YY
-            print date
+            date = self._convert_string(date)
         elif isinstance(date, Iterable):
-            # then it's an iterable
-            print date
+            date = '-'.join(str(n) for n in date)
         else:
             # it's a datetime
             print date
+        return date
+
+    def _convert_string(self, date):
+        """Convert a string to the right format."""
+        if '-' not in date:
+            # It has no separating dashes.
+            print "No dashes"
+        elif len(date) == 8:
+            # Then it's in MM-DD-YY format.
+            month, day, year = date.split('-')
+            date = '20%s-%s-%s' % (year, month, day)
+        return date
 
     def hour(self, hour):
         """Add a time to the date."""
@@ -34,7 +44,7 @@ class Date(object):
         return self
 
     def __str__(self):
-        return 'YYYY-MM-DD'
+        return self._date
 
     def __repr__(self):
         return self.__str__()
