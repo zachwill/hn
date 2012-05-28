@@ -77,4 +77,5 @@ The `U` flag allows filtering by a specific username.
 ```bash
 hn -U zachwill
 hn -U pg -T submission -S points
+hn -U pg -T comment -S points asc
 ```
