@@ -27,9 +27,9 @@ with `n` flag (maximum is 100), and starting ordinal position of results
 with the `s` flag.
 
 ```bash
-hn search term
-hn search term -n 100
-hn search term -n 100 -s 100
+hn term
+hn multiple terms -n 100
+hn multiple terms -n 100 -s 100
 ```
 
 ### Date
