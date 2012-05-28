@@ -35,11 +35,12 @@ hn multiple terms -n 100 -s 100
 ### Date
 
 The `d` flag allows for searchs filtered to a specific date (in
-`YYYY-MM-DD` format).
+`YYYY-MM-DD` or `MM-DD-YY` format).
 
 ```bash
+hn -d 03-16-12
 hn -d 2012-03-16
-hn github -d 2012-01-01
+hn github -d 2012-03-16
 ```
 
 ### Hits
