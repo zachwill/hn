@@ -76,7 +76,9 @@ class Search(TestCase):
 
     def test_date_filtering(self):
         self.create_cli('-d 2012-03-16')
-        self.assertTrue(cli.News().get.called)
+        self.assertSearchParameters(day='2012-03-16')
+        self.create_cli('-d 03-16-12')
+        self.assertSearchParameters(day='2012-03-16')
 
     def test_sortby_parameter(self):
         self.create_cli('pg -S points')
