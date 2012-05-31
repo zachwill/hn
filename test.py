@@ -8,7 +8,7 @@ from mock import Mock
 from yc import cli
 from yc import core
 from yc import times
-from yc.times import hour_format
+from yc.times import date_format, hour_format
 
 
 class CLI(TestCase):
@@ -81,6 +81,15 @@ class Search(TestCase):
     def test_sortby_parameter(self):
         self.create_cli('pg -S points')
         self.assertSearchParameters(q='pg', sortby='points desc')
+
+
+class DateFormat(TestCase):
+
+    def test_year_month_day(self):
+        self.assertEquals(date_format('2012-03-16'), '2012-03-16')
+
+    def test_month_day_year(self):
+        self.assertEquals(date_format('03-16-12'), '2012-03-16')
 
 
 class HourFormat(TestCase):
