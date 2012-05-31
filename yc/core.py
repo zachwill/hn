@@ -6,7 +6,7 @@ import requests as req
 import simplejson as json
 
 from . import thriftdb
-from .times import Date
+from .times import date_format
 
 
 class News(object):
@@ -23,7 +23,7 @@ class News(object):
 
     def date(self, day, **params):
         """Query a specific date."""
-        params['day'] = str(Date(day))
+        params['day'] = date_format(day)
         return self.get(**params)
 
     def facet(self, term, **params):

@@ -15,7 +15,7 @@ except ImportError:
     has_pygments = False
 
 from .core import News
-from .times import Date
+from .times import date_format
 
 
 def create_parser():
@@ -54,7 +54,7 @@ def search(options):
     if options.start:
         params['start'] = options.start
     if options.day:
-        params['day'] = Date(options.day)
+        params['day'] = date_format(options.day)
     if options.time:
         params['time'] = options.time
     if options.sort:

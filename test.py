@@ -52,7 +52,7 @@ class Search(TestCase):
     def setUp(self):
         cli.News = Mock()
         cli.present = Mock()
-        times.Date = Mock()
+        times.date_format = Mock()
 
     def create_cli(self, args):
         parser = cli.create_parser()
