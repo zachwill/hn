@@ -5,14 +5,22 @@ Turn a dictionary of sane key-value pairs to the somewhat crazy ThriftDB
 key-value parameters.
 """
 
+from .times import hour_format
+
 
 def convert(data):
     """Where the conversion magic happens."""
     if 'day' in data:
-        # Should be in YYYY-MM-DD format
         key = 'filter[fields][create_ts]'
         date = data.pop('day')
-        value = "[%sT00:00:00Z TO %sT23:59:59Z]" % (date, date)
+        if 'time' in data:
+            start, end = data['time']
+            start = hour_format(start)
+            end = hour_format(end)
+        else:
+            start = '00:00:00'
+            end = '23:59:59'
+        value = "[%sT%sZ TO %sT%sZ]" % (date, start, date, end)
         data[key] = value
     if 'type' in data:
         # The type can't be plural (i.e. comments, submissions).

@@ -35,16 +35,34 @@ class Date(object):
             date = '20%s-%s-%s' % (year, month, day)
         return date
 
-    def hour(self, hour):
-        """Add a time to the date."""
-        if isinstance(hour, str):
-            print hour
-        else:
-            print hour
-        return self
-
     def __str__(self):
         return self._date
 
     def __repr__(self):
         return self.__str__()
+
+
+def hour_format(hour):
+    """Turn an string into the correct HNSearch API format."""
+    hour = hour.lower()
+    length = len(hour)
+    if length == 1:
+        formatted = "0%s:00:00" % hour
+    elif length == 2:
+        formatted = "%s:00:00" % hour
+    else:
+        time = hour[-2:]
+        hour = hour[:-2]
+        if length == 3:
+            if time == 'am':
+                formatted = "0%s:00:00" % hour
+            else:
+                hour = str(int(hour) + 12)
+                formatted = "%s:00:00" % hour
+        else:
+            if time == 'am' and hour == '12':
+                hour = '00'
+            elif time == 'pm' and hour.startswith('0'):
+                hour = str(int(hour) + 12)
+            formatted = "%s:00:00" % hour
+    return formatted

@@ -7,7 +7,8 @@ from mock import Mock
 
 from yc import cli
 from yc import core
-from yc import date
+from yc import times
+from yc.times import hour_format
 
 
 class CLI(TestCase):
@@ -51,7 +52,7 @@ class Search(TestCase):
     def setUp(self):
         cli.News = Mock()
         cli.present = Mock()
-        date.Date = Mock()
+        times.Date = Mock()
 
     def create_cli(self, args):
         parser = cli.create_parser()
@@ -80,6 +81,24 @@ class Search(TestCase):
     def test_sortby_parameter(self):
         self.create_cli('pg -S points')
         self.assertSearchParameters(q='pg', sortby='points desc')
+
+
+class HourFormat(TestCase):
+
+    def test_one_letter_string(self):
+        self.assertEquals(hour_format('0'), '00:00:00')
+
+    def test_two_letter_string(self):
+        self.assertEquals(hour_format('12'), '12:00:00')
+
+    def test_twelve_hour_clock_with_length_of_three(self):
+        self.assertEquals(hour_format('1am'), '01:00:00')
+        self.assertEquals(hour_format('1pm'), '13:00:00')
+
+    def test_twelve_hour_clock_with_length_of_four(self):
+        self.assertEquals(hour_format('12am'), '00:00:00')
+        self.assertEquals(hour_format('12pm'), '12:00:00')
+        self.assertEquals(hour_format('03pm'), '15:00:00')
 
 
 if __name__ == '__main__':

@@ -6,7 +6,7 @@ import requests as req
 import simplejson as json
 
 from . import thriftdb
-from .date import Date
+from .times import Date
 
 
 class News(object):

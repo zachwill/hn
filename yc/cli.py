@@ -15,7 +15,7 @@ except ImportError:
     has_pygments = False
 
 from .core import News
-from .date import Date
+from .times import Date
 
 
 def create_parser():
@@ -30,6 +30,8 @@ def create_parser():
                         help="ordinal position of first result")
     parser.add_argument('-d', '--day', metavar='YYYY-MM-DD', type=str,
                         help="filter by a specific date")
+    parser.add_argument('-t', '--time', type=str, nargs='+',
+                        help="filter between specific times")
     parser.add_argument('-S', '--sort', metavar='S', nargs='*',
                         help="list of pairs to sort results")
     parser.add_argument('-T', '--type', metavar='TYPE',
@@ -53,6 +55,8 @@ def search(options):
         params['start'] = options.start
     if options.day:
         params['day'] = Date(options.day)
+    if options.time:
+        params['time'] = options.time
     if options.sort:
         sort = options.sort
         if len(sort) == 1:

@@ -1,5 +1,5 @@
 from .core import News
-from .date import Date
+from .times import Date
 
 
 def get(**params):
