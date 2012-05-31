@@ -69,6 +69,19 @@ hn github -S username desc
 hn -d 03-16-12 -S username asc -n 100
 ```
 
+### Time
+
+In addition to filtering by date creation, you can specify the hours to
+search within on the specific day.
+
+```bash
+hn -d 03-16-12 -t 0 12
+hn -d 03-16-12 -t 13 23
+
+hn -d 03-16-12 -t 12am 12pm
+hn -d 03-16-12 -t 1pm 11pm
+```
+
 ### Type
 
 The `T` flag allows filtering by specific types of items (comment or
