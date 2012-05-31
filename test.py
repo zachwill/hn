@@ -85,6 +85,10 @@ class Search(TestCase):
         self.create_cli('-d 03-16-12 -t 0 12')
         self.assertSearchParameters(day='2012-03-16', time=['0', '12'])
 
+    def test_funky_date_and_hour_options(self):
+        self.create_cli('-d 031612 -t 12am 12pm')
+        self.assertSearchParameters(day='2012-03-16', time=['12am', '12pm'])
+
     def test_sortby_parameter(self):
         self.create_cli('pg -S points')
         self.assertSearchParameters(q='pg', sortby='points desc')
@@ -97,6 +101,10 @@ class DateFormat(TestCase):
 
     def test_month_day_year(self):
         self.assertEquals(date_format('03-16-12'), '2012-03-16')
+
+    def test_without_dashes(self):
+        self.assertEquals(date_format('031612'), '2012-03-16')
+        self.assertEquals(date_format('20120316'), '2012-03-16')
 
 
 class HourFormat(TestCase):

@@ -1,18 +1,6 @@
 Usage I see for the CLI going forward.
 
 
-
-### dates
-
-```
-hn -d 031612
-hn -d 20120316
-
-hn -d 03-16-12 -t 0 12
-hn -d 03-16-12 -t 12am 12pm
-```
-
-
 ### filter
 
 ```

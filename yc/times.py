@@ -11,8 +11,18 @@ def date_format(date):
     """Convert the given input to a date."""
     if isinstance(date, str):
         if '-' not in date:
-            # It has no separating dashes.
-            print "No dashes"
+            if len(date) == 8:
+                # It's a YYYYMMDD date.
+                year = date[:4]
+                month = date[4:6]
+                day = date[6:]
+                date = "%s-%s-%s" % (year, month, day)
+            else:
+                # Then it's MMDDYY.
+                year = date[4:]
+                month = date[:2]
+                day = date[2:4]
+                date = '20%s-%s-%s' % (year, month, day)
         elif len(date) == 8:
             # Then it's in MM-DD-YY format.
             month, day, year = date.split('-')
