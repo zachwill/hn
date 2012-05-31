@@ -8,6 +8,7 @@ from mock import Mock
 from yc import cli
 from yc import core
 from yc import times
+from yc import thriftdb
 from yc.times import date_format, hour_format
 
 
@@ -79,6 +80,10 @@ class Search(TestCase):
         self.assertSearchParameters(day='2012-03-16')
         self.create_cli('-d 03-16-12')
         self.assertSearchParameters(day='2012-03-16')
+
+    def test_date_and_hour_options(self):
+        self.create_cli('-d 03-16-12 -t 0 12')
+        self.assertSearchParameters(day='2012-03-16', time=['0', '12'])
 
     def test_sortby_parameter(self):
         self.create_cli('pg -S points')
