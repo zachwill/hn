@@ -46,8 +46,11 @@ The `d` flag allows for searchs filtered to a specific date (in
 ```bash
 hn -d 03-16-12
 hn -d 2012-03-16
+
 hn github -d 2012-03-16
+hn techcrunch -d 03-16-12
 ```
+
 
 ### Hits
 
