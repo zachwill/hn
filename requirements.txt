@@ -1,4 +1,0 @@
-mock
-requests
-simplejson
-pygments
