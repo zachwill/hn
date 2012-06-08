@@ -20,7 +20,6 @@
 
   <!-- Huge header -->
   <header>
-  <a href="http://github.com/zachwill/hn" class="octocat"><img src="img/octocat.png" alt="Octocat" /></a>
     <div class="container">
       <div class="row">
 
@@ -31,6 +30,7 @@
 
       </div>
     </div>
+    <a href="http://github.com/zachwill/hn" class="octocat"><img src="img/octocat.png" alt="Octocat" /></a>
   </header>
 
 
@@ -69,12 +69,12 @@
     <div class="container">
 
       <div class="row">
-        <span class="span3">
+        <span class="span4">
           <h3>Search</h3>
-          <p>Basic search tems and querying.</p>
+          <p>Specify number of results with the <code>n</code> flag, and starting ordinal position with the <code>s</code> flag.</p>
         </span>
 
-        <span class="span9">
+        <span class="span8">
           <!-- Code -->
           <pre><code>
             hn term
@@ -85,34 +85,103 @@
       </div>
 
       <div class="row">
-        <div class="span3">
+        <div class="span4">
           <h3>Date</h3>
-          <p>Basic search tems and querying.</p>
+          <p>The <code>d</code> flag allows for searchs filtered to a specific date (in <code>YYYY&#8209;MM&#8209;DD</code> or <code>MM&#8209;DD&#8209;YY</code> format).</p>
         </div>
-        <div class="span9">
+        <div class="span8">
           <pre><code>
-            hn term
-            hn multiple terms -n 100
-            hn multiple terms -n 100 -s 100
+            hn -d 03-16-12
+            hn -d 2012-03-16
+
+            hn github -d 2012-03-16
+            hn techcrunch -d 03-16-12
           </code></pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <h3>Hits</h3>
+          <p>Return the number of results encountered with the <code>&#8209;&#8209;hits</code> flag.</p>
+        </div>
+        <div class="span8">
+          <pre><code>
+            hn pg --hits
+            hn zachwill --hits
+          </code> </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <h3>Sorting</h3>
+          <p>By default, sorting will be descending (though both <code>asc</code> and <code>desc</code> can be used).</p>
+        </div>
+        <div class="span8">
+          <pre><code>
+            hn github -S points
+            hn github -S username desc
+            hn -d 03-16-12 -S username asc -n 100
+          </code> </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <h3>Time</h3>
+          <p>In addition to filtering by date creation, you can specify the hours to search within on the specific day.</p>
+        </div>
+        <div class="span8">
+          <pre><code>
+            hn -d 03-16-12 -t 0 12
+            hn -d 03-16-12 -t 13 23
+
+            hn -d 03-16-12 -t 12am 12pm
+            hn -d 03-16-12 -t 1pm 11pm
+          </code> </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <h3>Type</h3>
+          <p>The <code>T</code> flag allows filtering by specific types of items (comment or submission).</p>
+        </div>
+        <div class="span8">
+          <pre><code>
+            hn zachwill -T comment
+            hn pg -T submission -S points -n 100
+          </code> </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span4">
+          <h3>Username</h3>
+          <p>The <code>u</code> or <code>U</code> flags allow filtering by a specific username.</p>
+        </div>
+        <div class="span8">
+          <pre><code>
+            hn -U zachwill
+            hn ycombinator -U pg
+
+            hn -U pg -T submission -S points
+            hn -U pg -T comment -S points asc
+          </code> </pre>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <hr />
         </div>
       </div>
 
     </div>
   </div>
 
-
-
-  <!-- JavaScript at the bottom for fast page loading -->
-
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/jquery.js"><\/script>')</script>
-
-  <!-- Your JS goes here... -->
-
-  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
-       mathiasbynens.be/notes/async-analytics-snippet -->
+  <!-- Google Analytics -->
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

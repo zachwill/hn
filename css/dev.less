@@ -31,6 +31,10 @@ hr {
     padding: 25px 0;
 }
 
+code {
+    color: darken(@color, 12%);
+}
+
 header {
     #gradient > .radial(@mixed, darken(@color, 10%));
     border-bottom: 1px solid darken(@color, 15%);
@@ -40,14 +44,15 @@ header {
     h1, p {
         color: #fff;
         line-height: .9em;
-        text-shadow: 2px 2px 0 darken(@color, 5%);
     }
     h1 {
         font-size: 96px;
         padding-bottom: 20px;
+        text-shadow: 4px 4px 0 darken(@color, 5%);
     }
     p {
         font-size: 24px;
+        text-shadow: 2px 2px 0 darken(@color, 5%);
     }
     .row {
         .background-image(rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
@@ -62,6 +67,9 @@ header {
             width: 125px;
         }
     }
+    .tagline{
+        line-height: 1.2em;
+    }
 }
 
 .philosophy {
@@ -73,9 +81,6 @@ header {
     p {
         padding-right: 20px;
     }
-}
-
-.instructions {
 }
 
 
@@ -97,6 +102,68 @@ header {
     .philosophy {
         h2 {
             font-size: 32px;
+        }
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 979px) {
+    .philosophy {
+        h2 {
+            font-size: 20px;
+        }
+    }
+}
+
+/* Small tablets */
+@media (max-width: 767px) {
+    body {
+        padding: 0;
+    }
+    .row {
+        padding: 0 20px;
+    }
+    header {
+        .octocat {
+            width: 100px;
+        }
+    }
+    .philosophy {
+        padding-top: 25px;
+    }
+    .instructions{
+        .row {
+            padding-bottom: 10px;
+        }
+    }
+}
+
+
+/* Phone */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+    .row {
+        padding: 0 12px;
+    }
+    header{
+        padding: 50px 0;
+        .octocat{
+            right: 10px;
+            top: 10px;
+            width: 75px;
+        }
+        .tagline{
+            font-size: 22px;
+        }
+    }
+    .philosophy {
+        padding-top: 20px;
+    }
+    .instructions {
+        .row {
+            padding-bottom: 5px;
         }
     }
 }
