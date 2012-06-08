@@ -1,0 +1,102 @@
+@import "less/mixins.less";
+
+@color: #fe6623;
+@mixed: mix(@color, #fe9c23, 50);
+
+.background-image(@one, @two, @three) {
+    background-image: -webkit-linear-gradient(left, @one, @two, @three);
+    background-image:    -moz-linear-gradient(left, @one, @two, @three);
+    background-image:     -ms-linear-gradient(left, @one, @two, @three);
+    background-image:      -o-linear-gradient(left, @one, @two, @three);
+}
+
+.transform(@transformation) {
+  -webkit-transform: @transformation;
+     -moz-transform: @transformation;
+      -ms-transform: @transformation;
+       -o-transform: @transformation;
+          transform: @transformation;
+}
+
+hr {
+  .background-image(rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  border: 0;
+  height: 1px;
+  &.light {
+      .background-image(rgba(255,255,255,0), rgba(255,255,255,.1), rgba(255,255,255,0));
+  }
+}
+
+.row {
+    padding: 25px 0;
+}
+
+header {
+    #gradient > .radial(@mixed, darken(@color, 10%));
+    border-bottom: 1px solid darken(@color, 15%);
+    padding: 75px 0;
+    position: relative;
+    text-align: center;
+    h1, p {
+        color: #fff;
+        line-height: .9em;
+        text-shadow: 2px 2px 0 darken(@color, 5%);
+    }
+    h1 {
+        font-size: 96px;
+        padding-bottom: 20px;
+    }
+    p {
+        font-size: 24px;
+    }
+    .row {
+        .background-image(rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+        .background-image(rgba(255,255,255,0), rgba(255,255,255,0.1), rgba(255,255,255,0));
+        padding: 25px 0;
+    }
+    .octocat {
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        img {
+            width: 125px;
+        }
+    }
+}
+
+.philosophy {
+    padding: 50px 0 0;
+    text-shadow: 1px 1px 0 #fff;
+    h2 {
+        padding-top: 10px;
+    }
+    p {
+        padding-right: 20px;
+    }
+}
+
+.instructions {
+}
+
+
+/* Desktop */
+@media (min-width: 1200px) {
+    h3 {
+        font-size: 24px;
+        line-height: 1.4em;
+    }
+    p {
+        font-size: 15px;
+        line-height: 1.4em;
+    }
+    header {
+        h1 {
+            font-size: 120px;
+        }
+    }
+    .philosophy {
+        h2 {
+            font-size: 32px;
+        }
+    }
+}
