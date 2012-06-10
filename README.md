@@ -40,7 +40,7 @@ hn multiple terms -n 100 -s 100
 
 ### Date
 
-The `d` flag allows for searchs filtered to a specific date (in
+The `d` flag allows for searches filtered to a specific date (in
 `YYYY-MM-DD` or `MM-DD-YY` format).
 
 ```bash
