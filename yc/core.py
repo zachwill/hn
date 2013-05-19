@@ -26,6 +26,14 @@ class News(object):
         params['day'] = date_format(day)
         return self.get(**params)
 
+    def between(self, start, finish, **params):
+        """Filter between specific datetime intervals."""
+        start = start.strftime("%Y-%m-%dT%H:%M:%SZ")
+        finish = finish.strftime("%Y-%m-%dT%H:%M:%SZ")
+        value = "[%s TO %s]" % (start, finish)
+        params['filter[fields][create_ts]'] = value
+        return self.get(**params)
+
     def facet(self, term, **params):
         """Facets are almost like searching what can be searched."""
         params['facet'] = term

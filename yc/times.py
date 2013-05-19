@@ -22,16 +22,15 @@ def date_format(date):
                 year = date[4:]
                 month = date[:2]
                 day = date[2:4]
-                date = '20%s-%s-%s' % (year, month, day)
+                date = "20%s-%s-%s" % (year, month, day)
         elif len(date) == 8:
             # Then it's in MM-DD-YY format.
             month, day, year = date.split('-')
-            date = '20%s-%s-%s' % (year, month, day)
+            date = "20%s-%s-%s" % (year, month, day)
     elif isinstance(date, Iterable):
         date = '-'.join(str(n) for n in date)
     else:
-        # it's a datetime
-        print date
+        date = date.strtime("%Y-%m-%d")
     return date
 
 
