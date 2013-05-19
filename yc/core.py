@@ -16,6 +16,9 @@ class News(object):
 
     def get(self, **params):
         """Perform a GET request."""
+        # Default to the maximum 100 results
+        if "limit" not in params:
+            params["limit"] = 100
         params = thriftdb.convert(params)
         data = req.get(self.url, params=params)
         self.request = data
@@ -31,7 +34,7 @@ class News(object):
         start = start.strftime("%Y-%m-%dT%H:%M:%SZ")
         finish = finish.strftime("%Y-%m-%dT%H:%M:%SZ")
         value = "[%s TO %s]" % (start, finish)
-        params['filter[fields][create_ts]'] = value
+        params["filter[fields][create_ts]"] = value
         return self.get(**params)
 
     def facet(self, term, **params):
