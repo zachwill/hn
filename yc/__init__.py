@@ -16,7 +16,7 @@ def date(date, **params):
     return News().date(date, **params)
 
 
-def between(self, start, finish, **params):
+def between(start, finish, **params):
     """Search between two specific datetimes."""
     return News().between(start, finish, **params)
 
